@@ -1,4 +1,5 @@
-import { Zap, Instagram, Facebook, MessageCircle, MapPin } from 'lucide-react'
+import { Zap, Instagram, Facebook, MapPin } from 'lucide-react'
+import WhatsAppIcon from './WhatsAppIcon'
 import { ADDRESS, SOCIAL, WA, NAV_LINKS } from '../lib/constants'
 
 export default function Footer() {
@@ -40,7 +41,7 @@ export default function Footer() {
               aria-label="WhatsApp de Electro Technology"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray-300 transition-colors duration-200 hover:border-electric-500/50 hover:text-electric-400"
             >
-              <MessageCircle className="h-5 w-5" />
+              <WhatsAppIcon className="h-5 w-5" />
             </a>
           </div>
         </div>

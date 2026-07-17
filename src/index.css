@@ -69,14 +69,15 @@
            focus-visible:outline-electric-400;
   }
 
-  /* CTA WhatsApp: verde de marca, siempre reconocible */
+  /* CTA WhatsApp: verde de marca con acabado "glossy" y glow permanente */
   .btn-whatsapp {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5
            font-semibold text-white transition-all duration-200 cursor-pointer
-           bg-whatsapp hover:bg-whatsapp-dark
-           shadow-[0_0_0_0_rgba(37,211,102,0.5)]
-           hover:shadow-[0_0_28px_4px_rgba(37,211,102,0.4)]
-           hover:-translate-y-0.5 active:translate-y-0
+           bg-gradient-to-b from-[#32e670] to-whatsapp
+           shadow-[0_1px_0_0_rgba(255,255,255,0.3)_inset,0_8px_20px_-6px_rgba(18,140,126,0.6)]
+           hover:from-[#3dfb7e] hover:to-whatsapp-dark
+           hover:shadow-[0_1px_0_0_rgba(255,255,255,0.35)_inset,0_10px_28px_-4px_rgba(18,140,126,0.7)]
+           hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_1px_0_0_rgba(255,255,255,0.3)_inset]
            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
            focus-visible:outline-whatsapp;
   }

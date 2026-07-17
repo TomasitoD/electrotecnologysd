@@ -1,4 +1,5 @@
-import { MapPin, Clock, Phone, ArrowUpRight, MessageCircle } from 'lucide-react'
+import { MapPin, Clock, Phone, ArrowUpRight } from 'lucide-react'
+import WhatsAppIcon from '../WhatsAppIcon'
 import {
   ADDRESS,
   SCHEDULE,
@@ -53,7 +54,7 @@ export default function FindUs() {
               rel="noopener noreferrer"
               className="btn-whatsapp flex-1 !text-sm"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
               Escríbenos
             </a>
           </div>

@@ -1,4 +1,5 @@
-import { MessageCircle, Phone, Clock } from 'lucide-react'
+import { Phone, Clock } from 'lucide-react'
+import WhatsAppIcon from '../WhatsAppIcon'
 import { WA, PHONE_MAIN_DISPLAY, PHONE_STORE_DISPLAY, SCHEDULE } from '../../lib/constants'
 
 export default function FinalCTA() {
@@ -19,19 +20,19 @@ export default function FinalCTA() {
           href={WA.comprar}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-whatsapp mt-9 !px-9 !py-4 !text-base shadow-2xl"
+          className="btn-whatsapp mt-9 !px-10 !py-4 !text-base"
         >
-          <MessageCircle className="h-5 w-5" />
+          <WhatsAppIcon className="h-6 w-6" />
           Chatear ahora
         </a>
 
-        <div className="mx-auto mt-10 flex max-w-md flex-col items-center gap-3 text-sm text-white/90 sm:flex-row sm:justify-center sm:gap-8">
-          <span className="flex items-center gap-2">
-            <Phone className="h-4 w-4" />
+        <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center gap-4 text-sm text-white/90 md:flex-row md:justify-center md:gap-12">
+          <span className="flex items-center gap-2 whitespace-nowrap">
+            <Phone className="h-4 w-4 flex-shrink-0" />
             {PHONE_MAIN_DISPLAY} · {PHONE_STORE_DISPLAY}
           </span>
-          <span className="flex items-center gap-2">
-            <Clock className="h-4 w-4" />
+          <span className="flex items-center gap-2 whitespace-nowrap">
+            <Clock className="h-4 w-4 flex-shrink-0" />
             {SCHEDULE}
           </span>
         </div>
