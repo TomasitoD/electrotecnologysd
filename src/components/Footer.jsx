@@ -1,12 +1,5 @@
 import { Zap, Instagram, Facebook, MessageCircle, MapPin } from 'lucide-react'
-import { ADDRESS, SOCIAL, WA } from '../lib/constants'
-
-const LINKS = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Productos', href: '#productos' },
-  { label: 'Entrega', href: '#entrega' },
-  { label: 'Contacto', href: '#contacto' },
-]
+import { ADDRESS, SOCIAL, WA, NAV_LINKS } from '../lib/constants'
 
 export default function Footer() {
   return (
@@ -55,7 +48,7 @@ export default function Footer() {
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Enlaces rápidos</h3>
           <ul className="mt-4 space-y-2.5">
-            {LINKS.map((link) => (
+            {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="text-sm text-gray-400 transition-colors duration-200 hover:text-electric-400">
                   {link.label}
@@ -66,7 +59,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Visítanos</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Dirección</h3>
           <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-gray-400">
             <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-electric-400" />
             {ADDRESS}

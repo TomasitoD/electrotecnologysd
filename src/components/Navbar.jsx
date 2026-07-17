@@ -1,13 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Menu, X, Zap } from 'lucide-react'
-import { WA } from '../lib/constants'
-
-const LINKS = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Productos', href: '#productos' },
-  { label: 'Entrega', href: '#entrega' },
-  { label: 'Contacto', href: '#contacto' },
-]
+import { WA, NAV_LINKS } from '../lib/constants'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -34,7 +27,7 @@ export default function Navbar() {
 
         {/* Links desktop */}
         <ul className="hidden items-center gap-8 md:flex">
-          {LINKS.map((link) => (
+          {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
@@ -74,7 +67,7 @@ export default function Navbar() {
         }`}
       >
         <ul className="section-container flex flex-col gap-1 pb-6 pt-2">
-          {LINKS.map((link) => (
+          {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}

@@ -26,7 +26,7 @@ const FEATURES = [
 
 export default function WhyUs() {
   return (
-    <section className="relative py-20 sm:py-28">
+    <section id="beneficios" className="relative py-20 sm:py-28">
       <div className="section-container">
         <div data-reveal className="text-center">
           <p className="eyebrow mb-4 justify-center">Confianza</p>

@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown, Truck, Star } from 'lucide-react'
 import CircuitBackground from '../CircuitBackground'
 import { WA } from '../../lib/constants'
 
@@ -11,6 +11,13 @@ export default function Hero() {
       <div className="pointer-events-none absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-electric-500/20 blur-[120px]" />
 
       <div className="section-container relative z-10 py-20 text-center">
+        <div className="mb-6 flex justify-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-electric-500/30 bg-electric-500/10 px-4 py-1.5 text-xs font-semibold text-electric-300 sm:text-sm">
+            <Truck className="h-3.5 w-3.5" strokeWidth={2.4} />
+            Envíos a todo el país
+          </span>
+        </div>
+
         <p className="eyebrow mb-6 justify-center">Electrodomésticos y tecnología</p>
 
         <h1 className="mx-auto max-w-3xl font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl">
@@ -34,6 +41,16 @@ export default function Hero() {
             Ver productos
             <ChevronDown className="h-4 w-4" />
           </a>
+        </div>
+
+        <div className="mt-8 flex items-center justify-center gap-2 text-sm text-gray-300">
+          <div className="flex gap-0.5" aria-label="4.3 de 5 estrellas">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="h-4 w-4 fill-electric-400 text-electric-400" />
+            ))}
+          </div>
+          <span className="font-semibold text-white">4.3</span>
+          <span className="text-gray-400">· Google Maps</span>
         </div>
       </div>
     </section>

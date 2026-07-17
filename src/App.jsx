@@ -8,6 +8,7 @@ import Categories from './components/sections/Categories'
 import WhyUs from './components/sections/WhyUs'
 import HowToBuy from './components/sections/HowToBuy'
 import Reviews from './components/sections/Reviews'
+import FindUs from './components/sections/FindUs'
 import FinalCTA from './components/sections/FinalCTA'
 import { initScrollReveal } from './lib/scrollReveal'
 
@@ -27,6 +28,7 @@ export default function App() {
         <WhyUs />
         <HowToBuy />
         <Reviews />
+        <FindUs />
         <FinalCTA />
       </main>
       <Footer />

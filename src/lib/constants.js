@@ -10,12 +10,21 @@ export const PHONE_STORE_DISPLAY = '829-342-0773'
 
 export const ADDRESS = 'Residencial Jeisy III, Av. Egbert Morrison 25, Santo Domingo Este'
 export const SCHEDULE = 'Todos los días · Cierra 7:00 pm'
+export const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`
 
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/electrotecnologysd/',
   instagramHandle: '@electrotecnologysd',
   facebook: 'https://www.facebook.com/954883201039512',
 }
+
+// Links de navegación compartidos entre Navbar y Footer
+export const NAV_LINKS = [
+  { label: 'Inicio', href: '#inicio' },
+  { label: 'Productos', href: '#productos' },
+  { label: 'Beneficios', href: '#beneficios' },
+  { label: 'Visítanos', href: '#visitanos' },
+]
 
 // Genera un link de WhatsApp con mensaje pre-llenado
 function waLink(message) {
@@ -25,10 +34,10 @@ function waLink(message) {
 export const WA = {
   general: waLink('Hola, me interesa saber más sobre sus productos'),
   televisores: waLink('Hola, me interesa ver sus Televisores'),
+  neveras: waLink('Hola, me interesa ver sus Neveras'),
   aires: waLink('Hola, me interesa ver sus Aires Acondicionados'),
+  lavadoras: waLink('Hola, me interesa ver sus Lavadoras y Secadoras'),
+  estufas: waLink('Hola, me interesa ver sus Estufas y Cocinas'),
   celulares: waLink('Hola, me interesa ver sus Celulares'),
-  hogar: waLink('Hola, me interesa ver sus Electrodomésticos del hogar'),
-  audio: waLink('Hola, me interesa ver su Audio y Sonido'),
-  accesorios: waLink('Hola, me interesa ver sus Accesorios Tech'),
   comprar: waLink('Hola, quiero comprar. ¿Me pueden ayudar?'),
 }
