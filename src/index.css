@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Tokens de diseño — Electro Technology
+   Paleta navy + acento eléctrico, tal como está definida en la identidad
+   visual del logo del cliente. No usar valores hardcodeados fuera de aquí.
+   ========================================================================== */
+@theme {
+  /* Fondos navy */
+  --color-navy-950: #020812;
+  --color-navy-900: #050d24;
+  --color-navy-800: #0a1a3f;
+  --color-navy-700: #0d2258;
+
+  /* Acento eléctrico */
+  --color-electric-400: #38bdf8;
+  --color-electric-500: #00b4d8;
+  --color-electric-600: #0077b6;
+  --color-electric-700: #005e8e;
+
+  /* Verde WhatsApp */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #128c7e;
+
+  /* Texto */
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #94a3b8;
+
+  /* Fuentes */
+  --font-body: 'Inter', 'Outfit', sans-serif;
+  --font-display: 'Outfit', 'Inter', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-navy-900);
+    color: #ffffff;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Respeta la preferencia del usuario de reducir movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* CTA principal: azul eléctrico con glow */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5
+           font-semibold text-white transition-all duration-200 cursor-pointer
+           bg-gradient-to-r from-electric-500 to-electric-600
+           shadow-[0_0_0_0_rgba(0,180,216,0.5)]
+           hover:shadow-[0_0_28px_4px_rgba(0,180,216,0.45)]
+           hover:-translate-y-0.5 active:translate-y-0
+           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+           focus-visible:outline-electric-400;
+  }
+
+  /* CTA WhatsApp: verde de marca, siempre reconocible */
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5
+           font-semibold text-white transition-all duration-200 cursor-pointer
+           bg-whatsapp hover:bg-whatsapp-dark
+           shadow-[0_0_0_0_rgba(37,211,102,0.5)]
+           hover:shadow-[0_0_28px_4px_rgba(37,211,102,0.4)]
+           hover:-translate-y-0.5 active:translate-y-0
+           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+           focus-visible:outline-whatsapp;
+  }
+
+  /* Card glassmorphism navy con borde eléctrico sutil */
+  .glass-card {
+    @apply relative rounded-2xl border border-white/10 bg-white/[0.04]
+           backdrop-blur-xl transition-all duration-300
+           hover:border-electric-500/40 hover:bg-white/[0.06];
+  }
+
+  /* Texto con degradado cian → azul */
+  .text-electric-gradient {
+    @apply bg-gradient-to-r from-electric-400 via-electric-500 to-electric-600
+           bg-clip-text text-transparent;
+  }
+
+  /* Etiqueta de sección en mayúsculas con líneas laterales */
+  .eyebrow {
+    @apply flex items-center justify-center gap-3 text-xs font-bold uppercase
+           tracking-[0.2em] text-electric-400;
+  }
+  .eyebrow::before,
+  .eyebrow::after {
+    content: '';
+    @apply h-px w-8 bg-gradient-to-r from-transparent via-electric-500/70 to-transparent;
+  }
+
+  /* Contenedor estándar de secciones */
+  .section-container {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+}
