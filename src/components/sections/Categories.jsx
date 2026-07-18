@@ -1,51 +1,33 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ImagePlus } from 'lucide-react'
 import { WA } from '../../lib/constants'
-import imgTelevisores from '../../assets/categories/televisores.jpg'
-import imgNeveras from '../../assets/categories/neveras.jpg'
-import imgAires from '../../assets/categories/aires.jpg'
-import imgLavadoras from '../../assets/categories/lavadoras.jpg'
-import imgEstufas from '../../assets/categories/estufas.jpg'
-import imgCelulares from '../../assets/categories/celulares.jpg'
 
 const CATEGORIES = [
   {
-    image: imgTelevisores,
-    alt: 'Televisor smart TV',
     name: 'Televisores',
     description: 'Smart TV 4K y Full HD de las marcas más buscadas.',
     link: WA.televisores,
   },
   {
-    image: imgNeveras,
-    alt: 'Nevera / refrigerador para el hogar',
     name: 'Neveras',
     description: 'Refrigeradores para el hogar en varias capacidades.',
     link: WA.neveras,
   },
   {
-    image: imgAires,
-    alt: 'Aire acondicionado tipo split',
     name: 'Aires acondicionados',
     description: 'Equipos split para tu hogar u oficina.',
     link: WA.aires,
   },
   {
-    image: imgLavadoras,
-    alt: 'Lavadora automática',
     name: 'Lavadoras y Secadoras',
     description: 'Automáticas y de carga frontal.',
     link: WA.lavadoras,
   },
   {
-    image: imgEstufas,
-    alt: 'Estufa / cocina para el hogar',
     name: 'Estufas y Cocinas',
     description: 'A gas, eléctricas y de inducción.',
     link: WA.estufas,
   },
   {
-    image: imgCelulares,
-    alt: 'Celular smartphone',
     name: 'Celulares',
     description: 'Equipos con garantía real.',
     link: WA.celulares,
@@ -73,7 +55,7 @@ export default function Categories() {
         </div>
 
         <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
-          {CATEGORIES.map(({ image, alt, name, description, link }) => (
+          {CATEGORIES.map(({ name, description, link }) => (
             <a
               key={name}
               href={link}
@@ -82,15 +64,12 @@ export default function Categories() {
               data-reveal
               className="glass-card group flex cursor-pointer flex-col overflow-hidden"
             >
-              <div className="aspect-square w-full overflow-hidden">
-                <img
-                  src={image}
-                  alt={alt}
-                  width={800}
-                  height={800}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
+              {/* Espacio reservado para la foto de producto — se define con el cliente */}
+              <div className="flex aspect-square w-full flex-col items-center justify-center gap-2 border-b border-dashed border-white/10 bg-white/[0.02]">
+                <ImagePlus className="h-8 w-8 text-gray-600" strokeWidth={1.5} />
+                <span className="text-[11px] font-medium uppercase tracking-wide text-gray-600">
+                  Foto próximamente
+                </span>
               </div>
               <div className="flex flex-1 flex-col gap-1.5 p-5 sm:p-6">
                 <span className="font-display text-base font-semibold leading-snug text-white sm:text-lg">
