@@ -1,6 +1,11 @@
 import { useState } from 'react'
-import { Send, ChevronDown } from 'lucide-react'
+import { Send, Store, Truck } from 'lucide-react'
 import { WHATSAPP_BASE } from '../lib/constants'
+
+const METODOS_PAGO = [
+  { value: 'Comprar en local', icon: Store },
+  { value: 'Pago contra entrega', icon: Truck },
+]
 
 const inputClass =
   'w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-gray-500 focus:border-electric-500/60 focus:outline-none'
@@ -25,6 +30,10 @@ export default function OrderForm({ productName, categoryName }) {
   function handleChange(e) {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
+  }
+
+  function selectMetodoPago(value) {
+    setForm((prev) => ({ ...prev, metodoPago: prev.metodoPago === value ? '' : value }))
   }
 
   function handleSubmit(e) {
@@ -82,23 +91,29 @@ export default function OrderForm({ productName, categoryName }) {
       </div>
 
       <div>
-        <label htmlFor="metodoPago" className="mb-1.5 block text-sm font-medium text-gray-300">
-          Método de pago <span className="text-gray-500">(opcional)</span>
-        </label>
-        <div className="relative">
-          <select
-            id="metodoPago"
-            name="metodoPago"
-            value={form.metodoPago}
-            onChange={handleChange}
-            className={`${inputClass} appearance-none pr-10`}
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="Efectivo">Efectivo</option>
-            <option value="Transferencia">Transferencia</option>
-            <option value="Pago contra entrega">Pago contra entrega</option>
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+        <span className="mb-1.5 block text-sm font-medium text-gray-300">
+          ¿Cómo prefieres comprar? <span className="text-gray-500">(opcional)</span>
+        </span>
+        <div className="grid grid-cols-2 gap-3">
+          {METODOS_PAGO.map(({ value, icon: Icon }) => {
+            const selected = form.metodoPago === value
+            return (
+              <button
+                key={value}
+                type="button"
+                onClick={() => selectMetodoPago(value)}
+                aria-pressed={selected}
+                className={`flex cursor-pointer flex-col items-center gap-2 rounded-lg border px-3 py-3.5 text-center text-sm font-medium transition-colors duration-200 ${
+                  selected
+                    ? 'border-electric-500/70 bg-electric-500/15 text-white'
+                    : 'border-white/15 bg-white/5 text-gray-300 hover:border-white/25'
+                }`}
+              >
+                <Icon className={`h-5 w-5 ${selected ? 'text-electric-400' : 'text-gray-400'}`} />
+                {value}
+              </button>
+            )
+          })}
         </div>
       </div>
 
