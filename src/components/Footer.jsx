@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Zap, Instagram, Facebook, MapPin } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import { ADDRESS, SOCIAL, WA, NAV_LINKS } from '../lib/constants'
@@ -7,10 +8,10 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-navy-950">
       <div className="section-container grid gap-10 py-14 sm:grid-cols-2 md:grid-cols-4">
         <div className="sm:col-span-2 md:col-span-2">
-          <a href="#inicio" className="flex items-center gap-2 font-display text-lg font-extrabold tracking-tight text-white">
+          <Link to="/" className="flex items-center gap-2 font-display text-lg font-extrabold tracking-tight text-white">
             <Zap className="h-6 w-6 text-electric-400" strokeWidth={2.4} aria-hidden="true" />
             ELECTRO<span className="text-electric-gradient">TECHNOLOGY</span>
-          </a>
+          </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-400">
             Electrodomésticos y tecnología con garantía, envíos a todo el país y
             pago contra entrega. Tienda física en Santo Domingo Este.

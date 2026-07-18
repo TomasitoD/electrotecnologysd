@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, X, Zap } from 'lucide-react'
 import { WA, NAV_LINKS } from '../lib/constants'
 
@@ -20,10 +21,10 @@ export default function Navbar() {
       }`}
     >
       <nav className="section-container flex h-16 items-center justify-between sm:h-20">
-        <a href="#inicio" className="flex items-center gap-2 font-display text-lg font-extrabold tracking-tight text-white sm:text-xl">
+        <Link to="/" className="flex items-center gap-2 font-display text-lg font-extrabold tracking-tight text-white sm:text-xl">
           <Zap className="h-6 w-6 text-electric-400" strokeWidth={2.4} aria-hidden="true" />
           ELECTRO<span className="text-electric-gradient">TECHNOLOGY</span>
-        </a>
+        </Link>
 
         {/* Links desktop */}
         <ul className="hidden items-center gap-8 md:flex">
