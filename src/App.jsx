@@ -1,38 +1,17 @@
-import { useEffect } from 'react'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import WhatsAppFloat from './components/WhatsAppFloat'
-import Hero from './components/sections/Hero'
-import TrustBar from './components/sections/TrustBar'
-import Categories from './components/sections/Categories'
-import WhyUs from './components/sections/WhyUs'
-import HowToBuy from './components/sections/HowToBuy'
-import Reviews from './components/sections/Reviews'
-import FindUs from './components/sections/FindUs'
-import FinalCTA from './components/sections/FinalCTA'
-import { initScrollReveal } from './lib/scrollReveal'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import Home from './pages/Home'
+import CategoryProducts from './pages/CategoryProducts'
+import ProductDetail from './pages/ProductDetail'
 
 export default function App() {
-  useEffect(() => {
-    const cleanup = initScrollReveal()
-    return cleanup
-  }, [])
-
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <TrustBar />
-        <Categories />
-        <WhyUs />
-        <HowToBuy />
-        <Reviews />
-        <FindUs />
-        <FinalCTA />
-      </main>
-      <Footer />
-      <WhatsAppFloat />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/productos/:categorySlug" element={<CategoryProducts />} />
+        <Route path="/productos/:categorySlug/:productSlug" element={<ProductDetail />} />
+      </Route>
+    </Routes>
   )
 }

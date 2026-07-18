@@ -20,10 +20,10 @@ export const SOCIAL = {
 
 // Links de navegación compartidos entre Navbar y Footer
 export const NAV_LINKS = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Productos', href: '#productos' },
-  { label: 'Beneficios', href: '#beneficios' },
-  { label: 'Visítanos', href: '#visitanos' },
+  { label: 'Inicio', href: '/#inicio' },
+  { label: 'Productos', href: '/#productos' },
+  { label: 'Beneficios', href: '/#beneficios' },
+  { label: 'Visítanos', href: '/#visitanos' },
 ]
 
 // Genera un link de WhatsApp con mensaje pre-llenado
@@ -33,11 +33,5 @@ function waLink(message) {
 
 export const WA = {
   general: waLink('Hola, me interesa saber más sobre sus productos'),
-  televisores: waLink('Hola, me interesa ver sus Televisores'),
-  neveras: waLink('Hola, me interesa ver sus Neveras'),
-  aires: waLink('Hola, me interesa ver sus Aires Acondicionados'),
-  lavadoras: waLink('Hola, me interesa ver sus Lavadoras y Secadoras'),
-  estufas: waLink('Hola, me interesa ver sus Estufas y Cocinas'),
-  celulares: waLink('Hola, me interesa ver sus Celulares'),
   comprar: waLink('Hola, quiero comprar. ¿Me pueden ayudar?'),
 }

@@ -1,36 +1,36 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight, ImagePlus } from 'lucide-react'
-import { WA } from '../../lib/constants'
 
 const CATEGORIES = [
   {
+    slug: 'televisores',
     name: 'Televisores',
     description: 'Smart TV 4K y Full HD de las marcas más buscadas.',
-    link: WA.televisores,
   },
   {
+    slug: 'neveras',
     name: 'Neveras',
     description: 'Refrigeradores para el hogar en varias capacidades.',
-    link: WA.neveras,
   },
   {
+    slug: 'aires',
     name: 'Aires acondicionados',
     description: 'Equipos split para tu hogar u oficina.',
-    link: WA.aires,
   },
   {
+    slug: 'lavadoras',
     name: 'Lavadoras y Secadoras',
     description: 'Automáticas y de carga frontal.',
-    link: WA.lavadoras,
   },
   {
+    slug: 'estufas',
     name: 'Estufas y Cocinas',
     description: 'A gas, eléctricas y de inducción.',
-    link: WA.estufas,
   },
   {
+    slug: 'celulares',
     name: 'Celulares',
     description: 'Equipos con garantía real.',
-    link: WA.celulares,
   },
 ]
 
@@ -55,12 +55,10 @@ export default function Categories() {
         </div>
 
         <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
-          {CATEGORIES.map(({ name, description, link }) => (
-            <a
-              key={name}
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
+          {CATEGORIES.map(({ slug, name, description }) => (
+            <Link
+              key={slug}
+              to={`/productos/${slug}`}
               data-reveal
               className="glass-card group flex cursor-pointer flex-col overflow-hidden"
             >
@@ -83,7 +81,7 @@ export default function Categories() {
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
