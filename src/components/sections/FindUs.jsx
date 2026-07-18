@@ -4,6 +4,7 @@ import {
   ADDRESS,
   SCHEDULE,
   MAPS_URL,
+  MAPS_EMBED_URL,
   PHONE_MAIN_DISPLAY,
   PHONE_STORE_DISPLAY,
   WA,
@@ -20,7 +21,22 @@ export default function FindUs() {
           </h2>
         </div>
 
-        <div data-reveal className="glass-card mx-auto mt-12 max-w-2xl p-7 sm:p-9">
+        <div
+          data-reveal
+          className="mx-auto mt-12 h-72 max-w-2xl overflow-hidden rounded-2xl border border-white/10 sm:h-96"
+        >
+          <iframe
+            src={MAPS_EMBED_URL}
+            title="Ubicación de Electro Technology en el mapa"
+            width="100%"
+            height="100%"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="map-embed"
+          />
+        </div>
+
+        <div data-reveal className="glass-card mx-auto mt-6 max-w-2xl p-7 sm:p-9">
           <ul className="space-y-5">
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-electric-400" />

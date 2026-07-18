@@ -110,4 +110,11 @@
   .section-container {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
+
+  /* Filtro sutil para el iframe de Google Maps — solo desatura un poco,
+     sin invertir colores (invertir rompe la tarjeta de info que Google
+     superpone y la deja como un bloque negro sólido). */
+  .map-embed {
+    filter: grayscale(35%) contrast(105%) brightness(97%);
+  }
 }

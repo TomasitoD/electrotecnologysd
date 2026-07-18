@@ -11,6 +11,7 @@ export const PHONE_STORE_DISPLAY = '829-342-0773'
 export const ADDRESS = 'Residencial Jeisy III, Av. Egbert Morrison 25, Santo Domingo Este'
 export const SCHEDULE = 'Todos los días · Cierra 7:00 pm'
 export const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`
+export const MAPS_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(ADDRESS)}&output=embed`
 
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/electrotecnologysd/',
