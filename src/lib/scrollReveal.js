@@ -17,18 +17,23 @@ export function initScrollReveal() {
   const elements = gsap.utils.toArray('[data-reveal]')
   if (prefersReducedMotion || elements.length === 0) return () => {}
 
-  gsap.set(elements, { opacity: 0, y: 32 })
+  gsap.set(elements, { opacity: 0, y: 20 })
 
+  // start más temprano (el elemento dispara apenas asoma por abajo) y
+  // stagger/duration más cortos: con timings largos, un scroll a ritmo
+  // normal alcanza a las cards antes de que terminen de aparecer, dando
+  // sensación de retraso. Con esto la animación termina antes de que el
+  // usuario llegue a leerla.
   const trigger = ScrollTrigger.batch(elements, {
-    start: 'top 85%',
+    start: 'top 92%',
     once: true,
     onEnter: (batch) =>
       gsap.to(batch, {
         opacity: 1,
         y: 0,
-        duration: 0.6,
+        duration: 0.4,
         ease: 'power2.out',
-        stagger: 0.12,
+        stagger: 0.05,
         overwrite: true,
       }),
   })

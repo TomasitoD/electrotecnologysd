@@ -30,7 +30,11 @@ export default function CircuitBackground({ className = '', density = 'normal' }
     }
 
     function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      // En móvil no vale la pena pintar a 2x-3x de resolución para un
+      // fondo decorativo al 40% de opacidad — cap a 1x ahorra bastante
+      // trabajo de relleno de píxeles justo en el dispositivo más débil.
+      const isMobile = window.innerWidth < 768
+      const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2)
       width = canvas.clientWidth
       height = canvas.clientHeight
       canvas.width = width * dpr
@@ -46,20 +50,17 @@ export default function CircuitBackground({ className = '', density = 'normal' }
       }))
     }
 
-    function step() {
-      if (!visible) {
-        rafId = requestAnimationFrame(step)
-        return
-      }
-      ctx.clearRect(0, 0, width, height)
-
-      // Mover nodos y rebotar en los bordes
+    function moveNodes() {
       for (const n of nodes) {
         n.x += n.vx
         n.y += n.vy
         if (n.x < 0 || n.x > width) n.vx *= -1
         if (n.y < 0 || n.y > height) n.vy *= -1
       }
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, width, height)
 
       // Conectar nodos cercanos con líneas de opacidad decreciente
       const maxDist = 140
@@ -87,8 +88,18 @@ export default function CircuitBackground({ className = '', density = 'normal' }
         ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2)
         ctx.fill()
       }
+    }
 
+    let lastFrameTime = 0
+    const frameInterval = 1000 / 30 // 30fps alcanza de sobra para un fondo decorativo
+
+    function step(timestamp) {
       rafId = requestAnimationFrame(step)
+      if (!visible) return
+      if (timestamp - lastFrameTime < frameInterval) return
+      lastFrameTime = timestamp
+      moveNodes()
+      render()
     }
 
     resize()
@@ -103,8 +114,8 @@ export default function CircuitBackground({ className = '', density = 'normal' }
     observer.observe(canvas)
 
     if (prefersReducedMotion) {
-      // Dibuja un solo frame estático y no anima
-      step()
+      // Un solo frame estático, sin mover nodos ni agendar más frames
+      render()
     } else {
       rafId = requestAnimationFrame(step)
     }
