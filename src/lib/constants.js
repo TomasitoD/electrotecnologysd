@@ -5,6 +5,7 @@ export const WHATSAPP_NUMBER = '18094565043'
 export const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}`
 export const PHONE_STORE = '(829) 342-0773'
 export const PHONE_STORE_TEL = '+18293420773'
+export const PHONE_MAIN_TEL = '+18094565043'
 export const PHONE_MAIN_DISPLAY = '809-456-5043'
 export const PHONE_STORE_DISPLAY = '829-342-0773'
 

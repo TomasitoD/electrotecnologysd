@@ -1,6 +1,13 @@
 import { Phone, Clock } from 'lucide-react'
 import WhatsAppIcon from '../WhatsAppIcon'
-import { WA, PHONE_MAIN_DISPLAY, PHONE_STORE_DISPLAY, SCHEDULE } from '../../lib/constants'
+import {
+  WA,
+  PHONE_MAIN_TEL,
+  PHONE_MAIN_DISPLAY,
+  PHONE_STORE_TEL,
+  PHONE_STORE_DISPLAY,
+  SCHEDULE,
+} from '../../lib/constants'
 
 export default function FinalCTA() {
   return (
@@ -29,7 +36,13 @@ export default function FinalCTA() {
         <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center gap-4 text-sm text-white/90 md:flex-row md:justify-center md:gap-12">
           <span className="flex items-center gap-2 whitespace-nowrap">
             <Phone className="h-4 w-4 flex-shrink-0" />
-            {PHONE_MAIN_DISPLAY} · {PHONE_STORE_DISPLAY}
+            <a href={`tel:${PHONE_MAIN_TEL}`} className="hover:underline">
+              {PHONE_MAIN_DISPLAY}
+            </a>
+            <span aria-hidden="true">·</span>
+            <a href={`tel:${PHONE_STORE_TEL}`} className="hover:underline">
+              {PHONE_STORE_DISPLAY}
+            </a>
           </span>
           <span className="flex items-center gap-2 whitespace-nowrap">
             <Clock className="h-4 w-4 flex-shrink-0" />

@@ -5,7 +5,9 @@ import {
   SCHEDULE,
   MAPS_URL,
   MAPS_EMBED_URL,
+  PHONE_MAIN_TEL,
   PHONE_MAIN_DISPLAY,
+  PHONE_STORE_TEL,
   PHONE_STORE_DISPLAY,
   WA,
 } from '../../lib/constants'
@@ -49,7 +51,13 @@ export default function FindUs() {
             <li className="flex items-start gap-3">
               <Phone className="mt-0.5 h-5 w-5 flex-shrink-0 text-electric-400" />
               <span className="text-sm leading-relaxed text-gray-200 sm:text-base">
-                {PHONE_MAIN_DISPLAY} · {PHONE_STORE_DISPLAY}
+                <a href={`tel:${PHONE_MAIN_TEL}`} className="hover:text-electric-400">
+                  {PHONE_MAIN_DISPLAY}
+                </a>
+                <span aria-hidden="true"> · </span>
+                <a href={`tel:${PHONE_STORE_TEL}`} className="hover:text-electric-400">
+                  {PHONE_STORE_DISPLAY}
+                </a>
               </span>
             </li>
           </ul>
