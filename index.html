@@ -41,12 +41,70 @@
     />
     <meta name="twitter:image" content="https://electrotecnologysd.pages.dev/og-image.png" />
 
+    <!--
+      Fuentes cargadas sin bloquear el render: si Google Fonts responde
+      lento (red móvil, DNS, lo que sea), la página igual pinta de una vez
+      con la fuente de sistema y las fuentes de marca entran cuando lleguen
+      — antes esto era un <link rel="stylesheet"> normal, que bloquea el
+      primer paint hasta que ese request de un dominio externo resuelve.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap"
+      />
+    </noscript>
+
+    <!--
+      Estilos críticos inline: pintan el fondo navy y un loader de marca
+      de inmediato, sin esperar el CSS ni el JS del bundle. Así nunca se
+      ve una pantalla en blanco mientras el bundle carga en una red lenta.
+      React reemplaza el contenido de #root al montar.
+    -->
+    <style>
+      html, body { background: #050d24; margin: 0; }
+      /* Posicionamiento independiente de #root a propósito: #root sigue
+         siendo el contenedor real de la app después del montaje, así que
+         no puede llevar flex/centrado — solo el loader (que desaparece
+         entero junto con este markup cuando React reemplaza el contenido
+         de #root). */
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+        color: #fff;
+      }
+      #initial-loader svg {
+        animation: initial-loader-pulse 1.1s ease-in-out infinite;
+      }
+      #initial-loader span {
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        color: #94a3b8;
+      }
+      @keyframes initial-loader-pulse {
+        0%, 100% { opacity: 0.45; transform: scale(0.94); }
+        50% { opacity: 1; transform: scale(1); }
+      }
+    </style>
 
     <!--
       Google Analytics 4 — placeholder listo para activar post-cierre.
@@ -100,7 +158,14 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="initial-loader">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00b4d8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+        <span>CARGANDO&hellip;</span>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
